@@ -16,7 +16,6 @@
             font-family: 'Plus Jakarta Sans', sans-serif; 
             background-color: #f8fafc; 
             overflow-x: hidden; 
-            cursor: default;
         }
 
         .text-gradient { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -39,15 +38,12 @@
             border: 1px solid rgba(255, 255, 255, 0.4); 
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
         }
-        .glass-card:hover { transform: translateY(-15px) scale(1.02); background: white; box-shadow: 0 25px 50px -12px rgba(0, 114, 188, 0.15); }
-
-        .float { animation: floating 3s ease-in-out infinite; }
-        @keyframes floating { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .glass-card:hover { transform: translateY(-15px); background: white; box-shadow: 0 25px 50px -12px rgba(0, 114, 188, 0.15); }
 
         .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); }
         .modal.active { display: flex; align-items: center; justify-content: center; }
         
-        .stat-card { background: white; border-bottom: 4px solid var(--primary); }
+        .hidden-project { display: none; }
     </style>
 </head>
 <body class="selection:bg-orange-200">
@@ -61,7 +57,7 @@
             <div class="hidden md:flex items-center space-x-10 font-semibold text-slate-700">
                 <a href="#home" class="hover:text-blue-600 transition">Home</a>
                 <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
-                <a href="#contact" class="bg-slate-900 text-white px-7 py-3 rounded-2xl hover:bg-[#F58220] transition-all shadow-lg">Let's Talk</a>
+                <a href="#contact" class="bg-slate-900 text-white px-7 py-3 rounded-2xl hover:bg-[#F58220] transition-all">Let's Talk</a>
             </div>
         </div>
     </nav>
@@ -69,31 +65,24 @@
     <section id="home" class="min-h-screen flex items-center pt-28 px-6">
         <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div class="reveal-left">
-                <h1 class="text-6xl md:text-8xl font-black leading-tight text-slate-900 mb-8 animate__animated animate__fadeInDown">
+                <h1 class="text-6xl md:text-8xl font-black leading-tight text-slate-900 mb-8">
                     Scale Your <br><span class="text-gradient">Profit.</span>
                 </h1>
-                <p class="text-xl text-slate-500 max-w-lg mb-12 animate__animated animate__fadeInUp animate__delay-1s">
-                    Hello, I'm <span class="font-bold text-slate-800 underline decoration-orange-400 decoration-4 underline-offset-4 uppercase">RONI MAZHARUL</span>. Specialist in scaling brands on Amazon & Walmart.
+                <p class="text-xl text-slate-500 max-w-lg mb-12">
+                    Expert in E-commerce growth. I help brands dominate Amazon, Walmart, and eBay with data-driven strategies.
                 </p>
-                <div class="flex flex-wrap gap-6 items-center animate__animated animate__fadeInUp animate__delay-1s">
-                    <a href="mailto:mazharulronni.oh@gmail.com" class="px-10 py-5 bg-[#0f172a] text-white font-bold rounded-2xl shadow-2xl hover:bg-[#F58220] transition-all border border-slate-700">Work With Me</a>
-                    
+                <div class="flex flex-wrap gap-6 items-center">
+                    <button onclick="document.getElementById('contact').scrollIntoView()" class="px-10 py-5 bg-[#0f172a] text-white font-bold rounded-2xl shadow-2xl hover:bg-[#F58220] transition-all">Start Scaling Now</button>
                     <div class="flex space-x-6">
                         <a href="https://www.facebook.com/mazharul.ronni" target="_blank" class="text-slate-400 hover:text-blue-600 text-3xl transition-transform hover:-translate-y-2"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.linkedin.com/in/mazharul-roni/" target="_blank" class="text-slate-400 hover:text-blue-700 text-3xl transition-transform hover:-translate-y-2"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:mazharulronni.oh@gmail.com" class="text-slate-400 hover:text-orange-500 text-3xl transition-transform hover:-translate-y-2"><i class="fas fa-envelope"></i></a>
                     </div>
-                </div>
-                
-                <div class="mt-12 flex gap-8 items-center opacity-70 filter grayscale hover:grayscale-0 transition-all duration-500">
-                   <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">Trusted By:</span>
-                   <i class="fab fa-amazon text-3xl"></i>
-                   <i class="fab fa-google text-2xl"></i>
-                   <i class="fab fa-shopify text-3xl"></i>
                 </div>
             </div>
             <div class="reveal-right flex justify-center">
-                <div class="profile-container">
-                    <div class="w-80 h-80 md:w-[450px] md:h-[450px] overflow-hidden rounded-[2rem] border-8 border-white shadow-2xl float">
+                <div class="profile-container relative">
+                    <div class="w-80 h-80 md:w-[450px] md:h-[450px] overflow-hidden rounded-[2rem] border-8 border-white shadow-2xl">
                         <img src="h.jpg" alt="Roni" class="w-full h-full object-cover">
                     </div>
                 </div>
@@ -101,62 +90,26 @@
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-white/50 border-y border-slate-100">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="stat-card p-8 rounded-3xl text-center reveal-bottom shadow-sm">
-                <h4 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2"><span class="counter" data-target="100">0</span>+</h4>
-                <p class="text-slate-500 font-bold uppercase text-xs tracking-widest">Global Clients</p>
-            </div>
-            <div class="stat-card p-8 rounded-3xl text-center reveal-bottom shadow-sm" style="transition-delay: 100ms;">
-                <h4 class="text-4xl md:text-5xl font-extrabold text-orange-500 mb-2"><span class="counter" data-target="1">0</span>M+</h4>
-                <p class="text-slate-500 font-bold uppercase text-xs tracking-widest">High Quality Leads</p>
-            </div>
-            <div class="stat-card p-8 rounded-3xl text-center reveal-bottom shadow-sm" style="transition-delay: 200ms;">
-                <h4 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2"><span class="counter" data-target="24">0</span>/7</h4>
-                <p class="text-slate-500 font-bold uppercase text-xs tracking-widest">Support Center</p>
-            </div>
-            <div class="stat-card p-8 rounded-3xl text-center reveal-bottom shadow-sm" style="transition-delay: 300ms;">
-                <h4 class="text-4xl md:text-5xl font-extrabold text-blue-600 mb-2"><span class="counter" data-target="98">0</span>%</h4>
-                <p class="text-slate-500 font-bold uppercase text-xs tracking-widest">Success Rate</p>
-            </div>
-        </div>
-    </section>
-
     <section id="projects" class="py-32 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-20 reveal-bottom">
-                <h2 class="text-5xl font-black text-slate-900 mb-4 uppercase italic">Featured <span class="text-gradient">Projects</span></h2>
-                <div class="h-2 w-24 bg-blue-600 rounded-full"></div>
+            <div class="mb-20 text-center reveal-bottom">
+                <h2 class="text-5xl font-black text-slate-900 mb-4 uppercase italic">Work <span class="text-gradient">Portfolio</span></h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">Showing a glimpse of the success stories I've built for my global clients.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-10">
-                <div onclick="openProject('amazon')" class="glass-card p-4 rounded-[2.5rem] reveal-bottom cursor-pointer">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800" class="w-full h-56 object-cover rounded-[1.8rem] mb-6">
-                    <div class="px-4 pb-6">
-                        <h3 class="text-2xl font-bold mb-2">Amazon PPC Masterclass</h3>
-                        <p class="text-slate-500 text-sm">312% Growth in 60 Days...</p>
-                    </div>
+            <div id="projectGrid" class="grid md:grid-cols-3 gap-10">
                 </div>
-                <div onclick="openProject('walmart')" class="glass-card p-4 rounded-[2.5rem] reveal-bottom cursor-pointer" style="transition-delay: 100ms;">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800" class="w-full h-56 object-cover rounded-[1.8rem] mb-6">
-                    <div class="px-4 pb-6">
-                        <h3 class="text-2xl font-bold mb-2">Walmart Buy Box Pro</h3>
-                        <p class="text-slate-500 text-sm">Scaling electronics via WFS...</p>
-                    </div>
-                </div>
-                <div onclick="openProject('web')" class="glass-card p-4 rounded-[2.5rem] reveal-bottom cursor-pointer" style="transition-delay: 200ms;">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800" class="w-full h-56 object-cover rounded-[1.8rem] mb-6">
-                    <div class="px-4 pb-6">
-                        <h3 class="text-2xl font-bold mb-2">Luxury DTC Shopify</h3>
-                        <p class="text-slate-500 text-sm">Ultra-fast conversion engine...</p>
-                    </div>
-                </div>
+
+            <div class="mt-16 text-center">
+                <button id="seeMoreBtn" onclick="toggleProjects()" class="px-12 py-4 border-2 border-slate-900 text-slate-900 font-bold rounded-2xl hover:bg-slate-900 hover:text-white transition-all shadow-lg">
+                    See More Projects <i class="fas fa-chevron-down ml-2"></i>
+                </button>
             </div>
         </div>
     </section>
 
     <div id="projectModal" class="modal px-6">
-        <div class="bg-white max-w-4xl w-full max-h-[85vh] rounded-[3rem] overflow-y-auto p-8 md:p-12 relative">
+        <div class="bg-white max-w-4xl w-full max-h-[90vh] rounded-[3rem] overflow-y-auto p-8 md:p-12 relative shadow-2xl">
             <button onclick="closeProject()" class="absolute top-8 right-8 text-4xl text-slate-300 hover:text-red-500">&times;</button>
             <div id="modalContent"></div>
         </div>
@@ -166,64 +119,111 @@
         <div class="max-w-6xl mx-auto bg-slate-900 rounded-[4rem] flex flex-col md:flex-row border border-slate-800 shadow-2xl overflow-hidden reveal-bottom">
             <div class="md:w-1/2 p-16 text-white">
                 <h2 class="text-5xl font-bold mb-8 italic">Let's <span class="text-orange-500">Scale</span></h2>
-                <p class="text-slate-400 mb-12">Drop a message to discuss your next big launch. I am available for free consultation.</p>
-                <div class="flex items-center space-x-4 p-6 bg-slate-800/50 rounded-3xl border border-slate-700">
-                    <i class="fas fa-envelope text-orange-500 text-2xl"></i>
-                    <span class="font-semibold">mazharulronni.oh@gmail.com</span>
+                <p class="text-slate-400 mb-12">I'm currently accepting new projects. Let's discuss your brand's future.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4 p-6 bg-slate-800/50 rounded-3xl border border-slate-700">
+                        <i class="fas fa-envelope text-orange-500 text-2xl"></i>
+                        <span class="font-semibold text-sm md:text-base">mazharulronni.oh@gmail.com</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/mazharul.ronni" target="_blank" class="p-4 bg-slate-800 rounded-2xl text-white hover:bg-blue-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/mazharul-roni/" target="_blank" class="p-4 bg-slate-800 rounded-2xl text-white hover:bg-blue-700 transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
+            
             <div class="md:w-1/2 p-16 bg-white">
-                <form action="mailto:mazharulronni.oh@gmail.com" method="GET" enctype="text/plain" class="space-y-6">
-                    <input name="subject" type="text" placeholder="Subject / Your Name" class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all" required>
-                    <textarea name="body" rows="4" placeholder="Your Message" class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all" required></textarea>
-                    <button type="submit" class="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-[#F58220] transition-all">Send Inquiry</button>
-                </form>
+                <div class="space-y-6">
+                    <input id="userName" type="text" placeholder="Your Name" class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all">
+                    <textarea id="userMsg" rows="4" placeholder="Briefly describe your project..." class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all"></textarea>
+                    <button onclick="sendMailNow()" class="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-[#F58220] transition-all">Send Inquiry</button>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="py-16 text-center bg-white border-t border-slate-100">
         <img src="1765373558.jpg" alt="Logo" class="h-16 w-16 rounded-full mx-auto mb-8 shadow-lg">
+        
         <div class="flex justify-center space-x-10 mb-10">
             <a href="https://www.facebook.com/mazharul.ronni" target="_blank" class="text-3xl text-slate-400 hover:text-blue-600 transition-all"><i class="fab fa-facebook"></i></a>
             <a href="https://www.linkedin.com/in/mazharul-roni/" target="_blank" class="text-3xl text-slate-400 hover:text-blue-700 transition-all"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:mazharulronni.oh@gmail.com" class="text-3xl text-slate-400 hover:text-orange-500 transition-all"><i class="fas fa-envelope"></i></a>
         </div>
-        <p class="text-slate-400 text-xs tracking-widest uppercase">© 2026 RONI MAZHARUL • Powered by Ontek Horizon</p>
+        
+        <p class="text-slate-500 text-sm font-semibold tracking-wide uppercase">
+            © 2026 RONI MAZHARUL • Powered by Ontek Horizon
+        </p>
     </footer>
 
     <script>
-        const projectData = {
-            amazon: {
-                title: "Amazon FBA Scale-up Mastery",
-                desc: "Strategic PPC restructuring for global brands.",
-                results: ["312% Monthly Revenue Growth", "ACOS reduced to 18%", "Ranked #1 for 15+ keywords"],
-                img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200"
-            },
-            walmart: {
-                title: "Walmart Marketplace Dominance",
-                desc: "Optimized WFS setup for high-velocity electronics.",
-                results: ["Winning 90% Buy Box", "Pro Seller Status", "200% Organic traffic"],
-                img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200"
-            },
-            web: {
-                title: "Luxury Shopify Store",
-                desc: "Clean and conversion-optimized web development.",
-                results: ["1.2s Load Speed", "25% Conversion Rate", "Fully Responsive"],
-                img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200"
-            }
-        };
+        const allProjects = [
+            { id: 'amazon', title: 'Amazon FBA PPC Scale', category: 'Amazon', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800', desc: 'Scaled a supplement brand from $10k to $50k/mo.', results: ['312% Revenue Jump', '18% ACOS achieved', 'Top 5 Category Ranking'], review: "Roni's PPC strategy is unbeatable!", client: "NaturePure Inc." },
+            { id: 'walmart', title: 'Walmart Marketplace Pro', category: 'Walmart', img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800', desc: 'Dominating Walmart Buy Box with 92% win rate.', results: ['92% Buy Box Win', 'WFS Setup Success', '2.5x Organic Traffic'], review: "Expert in Walmart's algorithm.", client: "TechNexus" },
+            { id: 'web', title: 'Luxury Shopify Store', category: 'Development', img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800', desc: 'High-speed custom Shopify development.', results: ['3.8% Conversion Rate', '65% Faster Load', 'Mobile-First Design'], review: "Best conversion optimization ever.", client: "Modish Fashion" },
+            { id: 'brand', title: 'Home Decor Launch', category: 'Brand Building', img: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800', desc: 'A-Z launch for a new decor brand.', results: ['$20k Month-3 Profit', 'Custom Brand Design', 'Influencer Strategy'], review: "Professional from day one.", client: "HomeAura" },
+            { id: 'ebay', title: 'eBay SEO Power-Up', category: 'eBay', img: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=800', desc: 'Fixing sales velocity for an older eBay store.', results: ['800% Sales Increase', 'Top-Rated Seller Status', 'SEO Optimized Listings'], review: "Our store revived instantly!", client: "RetroGaming" },
+            { id: 'google', title: 'Google Ads ROAS Fix', category: 'Ads', img: 'https://images.unsplash.com/photo-1551288049-bbbda536ad79?auto=format&fit=crop&w=800', desc: 'Managing high-budget Google Shopping ads.', results: ['5.2x ROAS', '30% Lower CPC', 'Daily scaling expert'], review: "Highly data-driven approach.", client: "GlowSkin" },
+            { id: 'fba', title: 'Inventory Management', category: 'Logistics', img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800', desc: 'Optimizing FBA inventory to avoid storage fees.', results: ['Zero Storage Fees', 'No Stock-out in 1 Year', 'Efficient Lead Times'], review: "Saved us thousands of dollars.", client: "GadgetBox" },
+            { id: 'asell', title: 'Product Listing Video', category: 'Content', img: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800', desc: 'Highly engaging listing videos for electronics.', results: ['40% CTR Increase', 'Better Mobile View', 'Lower Return Rate'], review: "The video tripled our clicks!", client: "VoltTech" },
+            { id: 'dropship', title: 'High Ticket Dropshipping', category: 'Shopify', img: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&w=800', desc: 'Scaling high-ticket items on Google/FB ads.', results: ['$1k Average Order Value', 'Premium Supplier Sourcing', '24/7 Automation'], review: "Reliable and scale-focused.", client: "LuxFurn" }
+        ];
 
-        function openProject(key) {
-            const data = projectData[key];
+        let showingAll = false;
+
+        function renderProjects() {
+            const grid = document.getElementById('projectGrid');
+            grid.innerHTML = '';
+            
+            allProjects.forEach((proj, index) => {
+                const isHidden = index > 2 && !showingAll;
+                grid.innerHTML += `
+                    <div onclick="openProject('${proj.id}')" class="glass-card p-4 rounded-[2.5rem] cursor-pointer reveal-bottom ${isHidden ? 'hidden' : 'block'} animate__animated animate__fadeIn">
+                        <div class="relative overflow-hidden rounded-[1.8rem] mb-6">
+                            <img src="${proj.img}" class="w-full h-56 object-cover transform hover:scale-110 transition duration-500">
+                            <div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-4 py-1 rounded-full text-xs font-bold text-slate-900 shadow-sm">${proj.category}</div>
+                        </div>
+                        <div class="px-4 pb-6">
+                            <h3 class="text-2xl font-bold mb-2">${proj.title}</h3>
+                            <p class="text-slate-500 text-sm line-clamp-2">${proj.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleProjects() {
+            showingAll = !showingAll;
+            renderProjects();
+            const btn = document.getElementById('seeMoreBtn');
+            btn.innerHTML = showingAll ? 'Show Less <i class="fas fa-chevron-up ml-2"></i>' : 'See More Projects <i class="fas fa-chevron-down ml-2"></i>';
+        }
+
+        function openProject(id) {
+            const data = allProjects.find(p => p.id === id);
             const content = `
-                <img src="${data.img}" class="w-full h-72 object-cover rounded-[2rem] mb-8 animate__animated animate__zoomIn">
-                <h2 class="text-4xl font-black text-slate-900 mb-6">${data.title}</h2>
-                <div class="bg-blue-50 p-8 rounded-3xl mb-10">
-                    <ul class="space-y-4">
-                        ${data.results.map(r => `<li class="flex items-center font-semibold text-blue-800"><i class="fas fa-check-circle mr-3 text-blue-600"></i>${r}</li>`).join('')}
-                    </ul>
+                <img src="${data.img}" class="w-full h-80 object-cover rounded-[2.5rem] mb-8 shadow-xl">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <span class="text-orange-500 font-bold tracking-widest uppercase text-xs">${data.category} Project</span>
+                        <h2 class="text-4xl font-black text-slate-900 mt-2">${data.title}</h2>
+                    </div>
                 </div>
+                <div class="grid md:grid-cols-2 gap-8 mb-10">
+                    <div class="bg-blue-50 p-8 rounded-3xl">
+                        <h4 class="font-bold text-blue-900 mb-4 text-xl"><i class="fas fa-rocket mr-2"></i> Key Results</h4>
+                        <ul class="space-y-3">
+                            ${data.results.map(r => `<li class="flex items-start font-semibold text-blue-800"><i class="fas fa-check-circle mt-1 mr-3 text-blue-500"></i>${r}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-3xl">
+                        <i class="fas fa-quote-left text-orange-400 text-3xl mb-4"></i>
+                        <p class="text-slate-700 italic font-medium mb-4">"${data.review}"</p>
+                        <p class="font-bold text-slate-800">— ${data.client}</p>
+                    </div>
+                </div>
+                <button onclick="document.getElementById('contact').scrollIntoView(); closeProject();" class="w-full py-5 bg-slate-900 text-white font-bold rounded-2xl">Start Similar Project</button>
             `;
             document.getElementById('modalContent').innerHTML = content;
             document.getElementById('projectModal').classList.add('active');
@@ -235,30 +235,17 @@
             document.body.style.overflow = 'auto';
         }
 
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200;
-
-        const startCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / speed;
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 15);
-                    } else { counter.innerText = target; }
-                };
-                updateCount();
-            });
+        function sendMailNow() {
+            const name = document.getElementById('userName').value;
+            const message = document.getElementById('userMsg').value;
+            if(!name || !message) { alert("Please enter name and message"); return; }
+            window.location.href = `mailto:mazharulronni.oh@gmail.com?subject=Project Inquiry: ${name}&body=${message}`;
         }
 
-        ScrollReveal().reveal('.reveal-left', { origin: 'left', distance: '100px', duration: 1500 });
-        ScrollReveal().reveal('.reveal-right', { origin: 'right', distance: '100px', duration: 1500 });
-        ScrollReveal().reveal('.reveal-bottom', { 
-            origin: 'bottom', distance: '100px', duration: 1200, interval: 200,
-            afterReveal: startCounters 
-        });
+        renderProjects();
+        ScrollReveal().reveal('.reveal-left', { origin: 'left', distance: '80px', duration: 1000 });
+        ScrollReveal().reveal('.reveal-right', { origin: 'right', distance: '80px', duration: 1000 });
+        ScrollReveal().reveal('.reveal-bottom', { origin: 'bottom', distance: '80px', duration: 1000, interval: 200 });
 
         window.onclick = e => { if(e.target == document.getElementById('projectModal')) closeProject(); }
     </script>
