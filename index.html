@@ -79,6 +79,13 @@
                         <a href="mailto:mazharulronni.oh@gmail.com" class="text-slate-400 hover:text-orange-500 text-3xl transition-transform hover:-translate-y-2"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
+
+                <div class="mt-16 flex items-center gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+                    <span class="text-sm font-bold text-slate-400 uppercase tracking-widest">TRUSTED BY:</span>
+                    <i class="fab fa-amazon text-3xl"></i>
+                    <i class="fab fa-google text-2xl"></i>
+                    <i class="fab fa-shopify text-3xl"></i>
+                </div>
             </div>
             <div class="reveal-right flex justify-center">
                 <div class="profile-container relative">
@@ -134,11 +141,11 @@
             </div>
             
             <div class="md:w-1/2 p-16 bg-white">
-                <div class="space-y-6">
-                    <input id="userName" type="text" placeholder="Your Name" class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all">
-                    <textarea id="userMsg" rows="4" placeholder="Briefly describe your project..." class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all"></textarea>
-                    <button onclick="sendMailNow()" class="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-[#F58220] transition-all">Send Inquiry</button>
-                </div>
+                <form action="https://formspree.io/f/mazharulronni.oh@gmail.com" method="POST" class="space-y-6">
+                    <input name="name" type="text" placeholder="Your Name" class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all" required>
+                    <textarea name="message" rows="4" placeholder="Briefly describe your project..." class="w-full p-4 border-b-2 border-slate-100 outline-none focus:border-blue-500 transition-all" required></textarea>
+                    <button type="submit" class="w-full bg-slate-900 text-white font-bold py-5 rounded-2xl hover:bg-[#F58220] transition-all">Send Inquiry</button>
+                </form>
             </div>
         </div>
     </section>
@@ -235,6 +242,7 @@
             document.body.style.overflow = 'auto';
         }
 
+        // Keep the function but standard form submission is used now for better security
         function sendMailNow() {
             const name = document.getElementById('userName').value;
             const message = document.getElementById('userMsg').value;
